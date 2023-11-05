@@ -44,15 +44,34 @@
 </head>
 
 <body>
-	<!-- navbar -->
-	@include('layouts/topnav')
-	<!-- end navbar -->
+	<div class="dashboard-main-wrapper">
+		@auth
+		{{-- Top Nav --}}
+		@include('layouts/topnav')
 
-	{{-- Side Nav --}}
-	@include('layouts/sidenav')
-	{{-- Side Nav End --}}
+		{{-- Side Nav --}}
+		@include('layouts/sidenav')
+		@endauth
 
-	@yield('content')
+		<!-- wrapper  -->
+		<div class="dashboard-wrapper">
+			<div class="container-fluid  dashboard-content">
+
+				@auth @include('layouts/page-header') @endauth
+				
+				<div class="row">
+					<div class="col-sm-4"></div>
+					<div class="col-sm-4">
+						@include('core/messages')
+					</div>
+					<div class="col-sm-4"></div>
+				</div>
+
+				@yield('content')
+
+			</div>
+		</div>
+	</div>
 
 	<!-- Scripts -->
 	<script src="{{ asset('js/app.js') }}"

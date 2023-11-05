@@ -19,12 +19,12 @@
 						Menu
 					</li>
 					<li class="nav-item">
-						<a class="nav-link"
-						   href="ecommerce-product.html">Dashboard</a>
+						<a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"
+						   href="{{ route('dashboard') }}">Dashboard</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link"
-						   href="ecommerce-product.html">Customers</a>
+						<a class="nav-link {{ request()->is('users') ? 'active' : '' }}"
+						   href="/users">Customers</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link"
@@ -42,7 +42,7 @@
 						<a class="nav-link"
 						   href="ecommerce-product.html">Invoices</a>
 					</li>
-					<li class="nav-item ">
+					{{--<li class="nav-item ">
 						<a class="nav-link active"
 						   href="#"
 						   data-toggle="collapse"
@@ -464,7 +464,7 @@
 								</li>
 							</ul>
 						</div>
-					</li>
+					</li> --}}
 				</ul>
 			</div>
 		</nav>

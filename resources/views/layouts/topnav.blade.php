@@ -37,10 +37,11 @@
 									<a href="#"
 									   class="list-group-item list-group-item-action active">
 										<div class="notification-info">
-											<div class="notification-list-user-img"><img
-													 src="assets/images/avatar-2.jpg"
+											<div class="notification-list-user-img">
+												<img src="assets/images/avatar-2.jpg"
 													 alt=""
-													 class="user-avatar-md rounded-circle"></div>
+													 class="user-avatar-md rounded-circle">
+											</div>
 											<div class="notification-list-user-block"><span
 													  class="notification-list-user-name">Jeremy
 													Rakestraw</span>accepted your invitation to join the team.
@@ -160,7 +161,7 @@
 					<div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
 						 aria-labelledby="navbarDropdownMenuLink2">
 						<div class="nav-user-info">
-							<h5 class="mb-0 text-white nav-user-name">John Abraham </h5>
+							<h5 class="mb-0 text-white nav-user-name">{{ auth()->user()->name }}</h5>
 							<span class="status"></span><span class="ml-2">Available</span>
 						</div>
 						<a class="dropdown-item"
@@ -168,7 +169,16 @@
 						<a class="dropdown-item"
 						   href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
 						<a class="dropdown-item"
-						   href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+						   href="{{ route('logout') }}"
+						   onclick="event.preventDefault();
+						                                                     document.getElementById('logout-form').submit();">
+							<i class="fas fa-power-off mr-2"></i>Logout</a>
+						<form id="logout-form"
+							  action="{{ route('logout') }}"
+							  method="POST"
+							  style="display: none;">
+							@csrf
+						</form>
 					</div>
 				</li>
 			</ul>
