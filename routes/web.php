@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\StatementController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,8 +20,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware("auth")->group(function () {
     Route::get('/', [DashboardController::class, "index"])->name("dashboard");
+	
     Route::resources([
         "users" => UserController::class,
+        "orders" => OrderController::class,
+        "products" => OrderController::class,
+        "statements" => StatementController::class,
+        "invoices" => InvoiceController::class,
     ]);
 });
 

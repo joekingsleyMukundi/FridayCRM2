@@ -15,7 +15,7 @@ class UserService
      */
     public function index()
     {
-        $getUsers = User::paginate();
+        $getUsers = User::paginate(15);
 
 		return UserResource::collection($getUsers);
     }
@@ -32,6 +32,8 @@ class UserService
 		$user->name = $request->input("name");
 		$user->email = $request->input("email");
 		$user->phone = $request->input("phone");
+		$user->registration_number = $request->input("registration_number");
+		$user->address = $request->input("address");
 		$user->password = Hash::make($request->input("email"));
 
 		$saved = $user->save();
@@ -67,6 +69,14 @@ class UserService
 
 		if ($request->filled("name")) {
 			$user->name = $request->input("name");
+		}
+		
+		if ($request->filled("registration_number")) {
+			$user->registration_number = $request->input("registration_number");
+		}
+		
+		if ($request->filled("address")) {
+			$user->address = $request->input("address");
 		}
 		
 		if ($request->filled("phone")) {

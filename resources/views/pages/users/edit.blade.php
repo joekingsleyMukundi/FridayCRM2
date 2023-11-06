@@ -41,16 +41,34 @@
 					</div>
 					<div class="form-group">
 						<label for="inputText4"
-							   class="col-form-label">phone</label>
+							   class="col-form-label">Phone</label>
 						<input id="inputText4"
 							   type="tel"
 							   name="phone"
 							   class="form-control"
 							   placeholder="{{ $user->phone }}">
 					</div>
+					<div class="form-group">
+						<label for="registration_number"
+							   class="col-form-label">Registration Number</label>
+						<input id="registration_number"
+							   type="text"
+							   name="registration_number"
+							   class="form-control"
+							   placeholder="{{ $user->registration_number }}">
+					</div>
+					<div class="form-group">
+						<label for="address"
+							   class="col-form-label">Address</label>
+						<input id="address"
+							   type="text"
+							   name="address"
+							   class="form-control"
+							   placeholder="{{ $user->address }}">
+					</div>
 					<div class="d-flex justify-content-end">
 						<button type="submit"
-								class="btn btn-primary btn-rounded">Edit User</button>
+								class="btn btn-primary btn-rounded">Update User</button>
 					</div>
 				</form>
 			</div>

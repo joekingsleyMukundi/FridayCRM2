@@ -27,20 +27,20 @@
 						   href="/users">Customers</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link"
-						   href="ecommerce-product.html">Orders</a>
+						<a class="nav-link {{ request()->is('orders') ? 'active' : '' }}"
+						   href="/orders">Orders</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link"
-						   href="ecommerce-product.html">Products</a>
+						<a class="nav-link {{ request()->is('products') ? 'active' : '' }}"
+						   href="/products">Products</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link"
-						   href="ecommerce-product.html">Statements</a>
+						<a class="nav-link {{ request()->is('statements') ? 'active' : '' }}"
+						   href="/statements">Statements</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link"
-						   href="ecommerce-product.html">Invoices</a>
+						<a class="nav-link {{ request()->is('invoices') ? 'active' : '' }}"
+						   href="/invoices">Invoices</a>
 					</li>
 					{{--<li class="nav-item ">
 						<a class="nav-link active"

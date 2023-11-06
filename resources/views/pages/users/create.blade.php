@@ -17,31 +17,48 @@
 					  method="POST">
 					@csrf
 					<div class="form-group">
-						<label for="inputText3"
+						<label for="name"
 							   class="col-form-label">Name</label>
-						<input id="inputText3"
+						<input id="name"
 							   type="text"
 							   name="name"
 							   placeholder="John Doe"
 							   class="form-control">
 					</div>
 					<div class="form-group">
-						<label for="inputEmail">Email address</label>
-						<input id="inputEmail"
+						<label for="email">Email address</label>
+						<input id="email"
 							   type="email"
 							   name="email"
 							   placeholder="name@example.com"
-							   class="form-control">
+							   class="form-control"
+							   required>
 						<p>We'll never share your email with anyone else.</p>
 					</div>
 					<div class="form-group">
-						<label for="inputText4"
-							   class="col-form-label">phone</label>
-						<input id="inputText4"
+						<label for="phone"
+							   class="col-form-label">Phone</label>
+						<input id="phone"
 							   type="tel"
 							   name="phone"
 							   class="form-control"
 							   placeholder="0700123456">
+					</div>
+					<div class="form-group">
+						<label for="reg_no"
+							   class="col-form-label">Registration Number</label>
+						<input id="reg_no"
+							   type="text"
+							   name="registration_number"
+							   class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="address"
+							   class="col-form-label">Address</label>
+						<input id="address"
+							   type="text"
+							   name="address"
+							   class="form-control">
 					</div>
 					<div class="d-flex justify-content-end">
 						<button type="submit"
