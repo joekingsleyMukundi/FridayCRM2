@@ -6,8 +6,8 @@
 	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<div class="card">
 			<div class="d-flex justify-content-between card-header">
-				<h3 class="">Customers</h3>
-				<a href="/users/create"
+				<h3 class="">Products</h3>
+				<a href="/products/create"
 				   class="btn btn-primary btn-rounded">Create</a>
 			</div>
 			<div class="card-body">
@@ -16,30 +16,24 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Name</th>
-							<th scope="col">Email</th>
-							<th scope="col">Phone</th>
-							<th scope="col">Registration Number</th>
-							<th scope="col">Address</th>
+							<th scope="col">Price</th>
 							<th scope="col">Action</th>
 						</tr>
 					</thead>
 					<tbody>
-						@foreach ($users as $user)
+						@foreach ($products as $product)
 						<tr>
 							<th scope="row">{{ $loop->iteration }}</th>
-							<td>{{ $user->name }}</td>
-							<td>{{ $user->email }}</td>
-							<td>{{ $user->phone }}</td>
-							<td>{{ $user->registration_number }}</td>
-							<td>{{ $user->address }}</td>
+							<td>{{ $product->name }}</td>
+							<td class="text-success">KES {{ $product->price }}</td>
 							<td>
 								<div class="d-flex">
-									<a href="/users/{{ $user->id }}/edit"
+									<a href="/products/{{ $product->id }}/edit"
 									   class="btn btn-sm btn-primary btn-rounded">Edit</a>
 									<div class="mx-1">
 										{{-- Confirm Delete Modal End --}}
 										<div class="modal fade"
-											 id="deleteModal{{ $user->id }}"
+											 id="deleteModal{{ $product->id }}"
 											 tabIndex="-1"
 											 aria-labelledby="deleteModalLabel"
 											 aria-hidden="true">
@@ -48,7 +42,7 @@
 													<div class="modal-header">
 														<h1 id="deleteModalLabel"
 															class="modal-title fs-5 text-danger">
-															Delete Customer
+															Delete Club
 														</h1>
 														<button type="button"
 																class="btn-close"
@@ -56,7 +50,7 @@
 																aria-label="Close"></button>
 													</div>
 													<div class="modal-body text-wrap">
-														Are you sure you want to delete {{ $user->name }}.
+														Are you sure you want to delete {{ $product->name }}.
 														This process is irreversible.
 													</div>
 													<div class="modal-footer justify-content-between">
@@ -69,11 +63,11 @@
 																class="btn btn-danger rounded-pill text-white"
 																data-bs-dismiss="modal"
 																onclick="event.preventDefault();
-						                                                     document.getElementById('deleteForm{{ $user->id }}').submit();">
+						                                                     document.getElementById('deleteForm{{ $product->id }}').submit();">
 															Delete
 														</button>
-														<form id="deleteForm{{ $user->id }}"
-															  action="/users/{{ $user->id }}"
+														<form id="deleteForm{{ $product->id }}"
+															  action="/products/{{ $product->id }}"
 															  method="POST"
 															  style="display: none;">
 															<input type="hidden"
@@ -91,7 +85,7 @@
 										<button type="button"
 												class="btn btn-sm btn-danger rounded-pill text-white"
 												data-bs-toggle="modal"
-												data-bs-target="#deleteModal{{ $user->id }}">
+												data-bs-target="#deleteModal{{ $product->id }}">
 											Delete
 										</button>
 									</div>
@@ -103,7 +97,7 @@
 				</table>
 			</div>
 			<div class="card-footer">
-				{{ $users->links() }}
+				{{ $products->links() }}
 			</div>
 		</div>
 	</div>

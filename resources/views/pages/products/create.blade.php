@@ -8,12 +8,12 @@
 	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<div class="card">
 			<div class="d-flex justify-content-between card-header">
-				<h3 class="">Create User</h3>
-				<a href="/users"
+				<h3 class="">Create Product</h3>
+				<a href="/products"
 				   class="btn btn-primary btn-rounded">View All</a>
 			</div>
 			<div class="card-body">
-				<form action="/users"
+				<form action="/products"
 					  method="POST">
 					@csrf
 					<div class="form-group">
@@ -27,43 +27,17 @@
 							   required>
 					</div>
 					<div class="form-group">
-						<label for="email">Email address</label>
-						<input id="email"
-							   type="email"
-							   name="email"
-							   placeholder="name@example.com"
+						<label for="price">Price</label>
+						<input id="price"
+							   type="number"
+							   name="price"
+							   placeholder="10000"
 							   class="form-control"
 							   required>
-						<p>We'll never share your email with anyone else.</p>
-					</div>
-					<div class="form-group">
-						<label for="phone"
-							   class="col-form-label">Phone</label>
-						<input id="phone"
-							   type="tel"
-							   name="phone"
-							   class="form-control"
-							   placeholder="0700123456">
-					</div>
-					<div class="form-group">
-						<label for="reg_no"
-							   class="col-form-label">Registration Number</label>
-						<input id="reg_no"
-							   type="text"
-							   name="registration_number"
-							   class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="address"
-							   class="col-form-label">Address</label>
-						<input id="address"
-							   type="text"
-							   name="address"
-							   class="form-control">
 					</div>
 					<div class="d-flex justify-content-end">
 						<button type="submit"
-								class="btn btn-primary btn-rounded">Create User</button>
+								class="btn btn-primary btn-rounded">Create Product</button>
 					</div>
 				</form>
 			</div>
