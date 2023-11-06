@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\StatementService;
 use App\Models\Statement;
 use Illuminate\Http\Request;
 
 class StatementController extends Controller
 {
+    public function __construct(protected StatementService $service)
+    {
+        //
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,10 @@ class StatementController extends Controller
      */
     public function index()
     {
-        //
+        $orders = $this->service->index();
+
+        return view("/pages/statements/index")
+            ->with(["orders" => $orders]);
     }
 
     /**

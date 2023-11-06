@@ -73,7 +73,7 @@
 						<label for="inputText4"
 							   class="col-form-label">KRA Due</label>
 						<input id="kra_due"
-							   type="text"
+							   type="number"
 							   name="kra_due"
 							   placeholder="KRA Due"
 							   class="form-control">
@@ -82,26 +82,18 @@
 						<label for="inputText4"
 							   class="col-form-label">KEBS Due</label>
 						<input id="kebs_due"
-							   type="text"
+							   type="number"
 							   name="kebs_due"
 							   placeholder="KEBS Due"
 							   class="form-control">
 					</div>
-					<textarea id="other_query"
-							  name="other_query"
-							  placeholder="Other Query"
-							  class="form-control"
-							  cols="30"
-							  rows="10"></textarea>
 					<div class="form-group">
-						<label for="inputText4"
-							   class="col-form-label">Total Value</label>
-						<input id="total_value"
-							   type="number"
-							   name="total_value"
-							   class="form-control"
-							   placeholder="Total Value"
-							   required>
+						<textarea id="other_query"
+								  name="other_query"
+								  placeholder="Other Query"
+								  class="form-control"
+								  cols="30"
+								  rows="10"></textarea>
 					</div>
 					<div class="d-flex justify-content-end">
 						<button type="submit"

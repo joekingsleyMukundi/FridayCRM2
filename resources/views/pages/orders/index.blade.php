@@ -7,6 +7,7 @@
 		<div class="card">
 			<div class="d-flex justify-content-between card-header">
 				<h3 class="">Orders</h3>
+				<h4 class="text-success">KES {{ $ordersPendingValue }}</h4>
 				<a href="/orders/create"
 				   class="btn btn-primary btn-rounded">Create</a>
 			</div>
@@ -24,6 +25,7 @@
 							<th scope="col">KEBS Due</th>
 							<th scope="col">Other Query</th>
 							<th scope="col">Total Value</th>
+							<th scope="col">Status</th>
 							<th scope="col">Action</th>
 						</tr>
 					</thead>
@@ -40,6 +42,17 @@
 							<td>{{ $order->kebs_due }}</td>
 							<td>{{ $order->other_query }}</td>
 							<td>{{ $order->total_value }}</td>
+							<td>
+								<span @class(['py-2
+									  px-4
+									  rounded-pill
+									  text-capitalize'
+									  , 'bg-warning-subtle'=> $order->invoice?->status == 'pending'
+									, 'bg-success-subtle'=> $order->invoice?->status == 'paid'
+									])>
+									{{ $order->invoice?->status }}
+								</span>
+							</td>
 							<td>
 								<div class="d-flex">
 									<a href="/orders/{{ $order->id }}/edit"

@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\Http\Resources\OrderResource;
+use App\Models\Invoice;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
@@ -18,7 +19,11 @@ class OrderService
     {
         $getOrders = Order::paginate();
 
-        return OrderResource::collection($getOrders);
+        $ordersPendingValue = Order::join("invoices", "orders.id", "=", "invoices.order_id")
+            ->where("status", "pending")
+            ->sum("orders.total_value");
+
+        return [$ordersPendingValue, OrderResource::collection($getOrders)];
     }
 
     /**
@@ -47,6 +52,12 @@ class OrderService
      */
     public function store($request)
     {
+        // Calculate Total Value
+        $productPrice = Product::find($request->input("product_id"))->price;
+        $totalValue = $productPrice +
+        $request->input("kra_due") +
+        $request->input("kebs_due");
+
         $order = new Order;
         $order->user_id = $request->input("user_id");
         $order->product_id = $request->input("product_id");
@@ -56,9 +67,16 @@ class OrderService
         $order->kra_due = $request->input("kra_due");
         $order->kebs_due = $request->input("kebs_due");
         $order->other_query = $request->input("other_query");
-        $order->total_value = $request->input("total_value");
+        $order->total_value = $totalValue;
 
         $saved = $order->save();
+
+        // Create Invoice
+        $invoice = new Invoice;
+        $invoice->order_id = $order->id;
+        $invoice->user_id = $request->input("user_id");
+        $invoice->amount = $totalValue;
+        $invoice->save();
 
         $message = "Order created successfully";
 

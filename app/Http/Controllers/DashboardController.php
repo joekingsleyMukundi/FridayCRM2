@@ -3,19 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\DashboardService;
-use Illuminate\Http\Request;
+use App\Http\Services\OrderService;
 
 class DashboardController extends Controller
 {
-	public function __construct(protected DashboardService $service)
-	{
-		// 
-	}
+    public function __construct(protected DashboardService $service)
+    {
+        //
+    }
 
     public function index()
-	{
-		$this->service->index();
+    {
+        $dashboard = $this->service->index();
 
-		return view("index");
-	}
+		$orderService = new OrderService;
+		
+		$orders = $orderService->index();
+
+        // return  $dashboard;
+        return view("index")->with([
+            "dashboard" => $dashboard,
+            "orders" => $orders,
+        ]);
+    }
 }

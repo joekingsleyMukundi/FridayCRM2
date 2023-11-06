@@ -19,10 +19,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = $this->service->index();
+        [$ordersPendingValue, $orders] = $this->service->index();
 
         return view("pages/orders/index")->with([
             "orders" => $orders,
+            "ordersPendingValue" => $ordersPendingValue,
         ]);
     }
 
@@ -58,7 +59,6 @@ class OrderController extends Controller
             "kra_due" => "required|string",
             "kebs_due" => "required|string",
             "other_query" => "required|string",
-            "total_value" => "required|string",
         ]);
 
         [$saved, $message, $order] = $this->service->store($request);

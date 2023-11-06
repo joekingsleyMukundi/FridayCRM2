@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\InvoiceService;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
 {
+	public function __construct(protected InvoiceService $service)
+	{
+		// 
+	}
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,9 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        //
+        $invoices = $this->service->index();
+
+        return view("/pages/invoices/index")->with(["invoices" => $invoices]);
     }
 
     /**
@@ -67,9 +75,11 @@ class InvoiceController extends Controller
      * @param  \App\Models\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Invoice $invoice)
+    public function update(Request $request, $id)
     {
-        //
+        [$saved, $message, $invoice] = $this->service->update($request, $id);
+
+		return redirect("/invoices")->with(["success" => $message]);
     }
 
     /**
