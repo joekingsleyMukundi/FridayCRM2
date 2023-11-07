@@ -29,6 +29,8 @@ Route::middleware("auth")->group(function () {
         "statements" => StatementController::class,
         "invoices" => InvoiceController::class,
     ]);
+
+    Route::get("statement-by-customer-name", [StatementController::class, "byCustomerName"])->name("statements.by.customer.name");
 });
 
 Auth::routes();

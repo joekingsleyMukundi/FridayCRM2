@@ -91,4 +91,12 @@ class StatementController extends Controller
     {
         //
     }
+
+    public function byCustomerName(Request $request)
+    {
+        $orders = $this->service->byCustomerName($request);
+
+        return view("/pages/statements/index")
+            ->with(["orders" => $orders]);
+    }
 }
