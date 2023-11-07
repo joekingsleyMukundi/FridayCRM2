@@ -16,14 +16,9 @@ class DashboardController extends Controller
     {
         $dashboard = $this->service->index();
 
-		$orderService = new OrderService;
-		
-		$orders = $orderService->index();
-
         // return  $dashboard;
         return view("index")->with([
             "dashboard" => $dashboard,
-            "orders" => $orders,
         ]);
     }
 }

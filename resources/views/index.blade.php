@@ -12,7 +12,7 @@
 						<div class="card-body">
 							<h5 class="text-muted">Customers</h5>
 							<div class="metric-value d-inline-block">
-								<h1 class="mb-1">{{ $dashboard["users"] }}</h1>
+								<h1 class="mb-1">{{ $dashboard["totalUsers"] }}</h1>
 							</div>
 							<div class="metric-label d-inline-block float-right text-success font-weight-bold">
 								<span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
@@ -26,7 +26,7 @@
 						<div class="card-body">
 							<h5 class="text-muted">Orders</h5>
 							<div class="metric-value d-inline-block">
-								<h1 class="mb-1">{{ $dashboard["orders"] }}</h1>
+								<h1 class="mb-1">{{ $dashboard["totalOrders"] }}</h1>
 							</div>
 							<div class="metric-label d-inline-block float-right text-success font-weight-bold">
 								<span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
@@ -40,7 +40,7 @@
 						<div class="card-body">
 							<h5 class="text-muted">Revenue</h5>
 							<div class="metric-value d-inline-block">
-								<h1 class="mb-1 text-successs">KES {{ $dashboard["revenue"] }}</h1>
+								<h1 class="mb-1 text-success fs-4">KES {{ $dashboard["revenue"] }}</h1>
 							</div>
 							<div class="metric-label d-inline-block float-right text-primary font-weight-bold">
 								<span>N/A</span>
@@ -54,7 +54,7 @@
 						<div class="card-body">
 							<h5 class="text-muted">Products</h5>
 							<div class="metric-value d-inline-block">
-								<h1 class="mb-1">{{ $dashboard["products"] }}</h1>
+								<h1 class="mb-1">{{ $dashboard["totalProducts"] }}</h1>
 							</div>
 							<div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
 								<span>-2.00%</span>
@@ -91,7 +91,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										@foreach ($orders as $order)
+										@foreach ($dashboard["orders"] as $order)
 										<tr>
 											<th scope="row">{{ $loop->iteration }}</th>
 											<td>{{ $order->date }}</td>

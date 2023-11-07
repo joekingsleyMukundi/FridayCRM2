@@ -10,20 +10,23 @@ class DashboardService
 {
     public function index()
     {
-        $users = User::count();
+        $totalUsers = User::count();
 
-        $orders = Order::count();
+        $totalOrders = Order::count();
 
         $revenue = Order::join('products', 'orders.product_id', '=', 'products.id')
             ->sum('products.price');
 
-        $products = Product::count();
+        $totalProducts = Product::count();
+
+        $orders = Order::paginate();
 
         return [
-            "users" => $users,
-            "orders" => $orders,
+            "totalUsers" => $totalUsers,
+            "totalOrders" => $totalOrders,
             "revenue" => number_format($revenue),
-            "products" => $products,
+            "totalProducts" => $totalProducts,
+            "orders" => $orders,
         ];
     }
 }
