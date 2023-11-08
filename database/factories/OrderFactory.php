@@ -29,10 +29,10 @@ class OrderFactory extends Factory
             "date" => Carbon::now()->addDays(rand(1, 10)),
             "vehicle_registration" => fake()->word(),
             "entry_number" => fake()->numberBetween(10000, 100000),
-            "kra_due" => fake()->word(),
-            "kebs_due" => fake()->word(),
-            "other_query" => fake()->paragraph(),
-            "total_value" => fake()->word(),
+            "kra_due" => fake()->numberBetween(1000, 10000),
+            "kebs_due" => fake()->numberBetween(1000, 10000),
+            "other_charges" => fake()->numberBetween(100, 1000),
+            "total_value" => fake()->numberBetween(10000, 100000),
         ];
     }
 }

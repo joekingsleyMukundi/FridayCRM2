@@ -30,7 +30,6 @@ class ProductService
     {
         $product = new Product;
         $product->name = $request->input("name");
-        $product->price = $request->input("price");
 
         $saved = $product->save();
 

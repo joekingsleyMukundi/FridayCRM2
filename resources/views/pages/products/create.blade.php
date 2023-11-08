@@ -26,15 +26,6 @@
 							   class="form-control"
 							   required>
 					</div>
-					<div class="form-group">
-						<label for="price">Price</label>
-						<input id="price"
-							   type="number"
-							   name="price"
-							   placeholder="10000"
-							   class="form-control"
-							   required>
-					</div>
 					<div class="d-flex justify-content-end">
 						<button type="submit"
 								class="btn btn-primary btn-rounded">Create Product</button>

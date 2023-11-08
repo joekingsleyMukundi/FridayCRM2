@@ -71,29 +71,40 @@
 					</div>
 					<div class="form-group">
 						<label for="inputText4"
-							   class="col-form-label">KRA Due</label>
+							   class="col-form-label">Kra Due</label>
 						<input id="kra_due"
 							   type="number"
 							   name="kra_due"
-							   placeholder="KRA Due"
+							   placeholder="Enter Amount"
 							   class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="inputText4"
-							   class="col-form-label">KEBS Due</label>
+							   class="col-form-label">Kebs Due</label>
 						<input id="kebs_due"
 							   type="number"
 							   name="kebs_due"
-							   placeholder="KEBS Due"
+							   placeholder="Enter Amount"
 							   class="form-control">
 					</div>
 					<div class="form-group">
-						<textarea id="other_query"
-								  name="other_query"
-								  placeholder="Other Query"
-								  class="form-control"
-								  cols="30"
-								  rows="10"></textarea>
+						<label for="other_charges"
+							   class="col-form-label">Other Charges</label>
+						<input id="other_charges"
+							   type="number"
+							   name="other_charges"
+							   placeholder="Enter Amount"
+							   class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="total_value"
+							   class="col-form-label">Total Value</label>
+						<input id="total_value"
+							   type="number"
+							   name="total_value"
+							   class="form-control"
+							   value=:100300
+							   disabled>
 					</div>
 					<div class="d-flex justify-content-end">
 						<button type="submit"

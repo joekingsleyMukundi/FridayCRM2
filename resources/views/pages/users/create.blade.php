@@ -55,6 +55,14 @@
 					</div>
 					<div class="form-group">
 						<label for="address"
+							   class="col-form-label">KRA Pin</label>
+						<input id="kra_pin"
+							   type="text"
+							   name="kra_pin"
+							   class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="address"
 							   class="col-form-label">Address</label>
 						<input id="address"
 							   type="text"

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Provider\Commerce;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
@@ -17,8 +18,7 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            "name" => fake()->word(),
-            "price" => rand(1, 50) * 100000
+            "name" => fake()->company(),
         ];
     }
 }

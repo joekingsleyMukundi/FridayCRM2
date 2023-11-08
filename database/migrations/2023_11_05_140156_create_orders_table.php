@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('entry_number')->nullable();
             $table->string('kra_due')->nullable();
             $table->string('kebs_due')->nullable();
-            $table->string('other_query')->nullable();
+            $table->string('other_charges')->nullable();
             $table->string('total_value')->nullable();
             $table->timestamps();
         });

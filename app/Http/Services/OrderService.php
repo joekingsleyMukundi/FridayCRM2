@@ -66,7 +66,7 @@ class OrderService
         $order->entry_number = $request->input("entry_number");
         $order->kra_due = $request->input("kra_due");
         $order->kebs_due = $request->input("kebs_due");
-        $order->other_query = $request->input("other_query");
+        $order->other_charges = $request->input("other_charges");
         $order->total_value = $totalValue;
 
         $saved = $order->save();

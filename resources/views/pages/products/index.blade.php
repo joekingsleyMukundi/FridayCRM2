@@ -16,7 +16,6 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Name</th>
-							<th scope="col">Price</th>
 							<th scope="col">Action</th>
 						</tr>
 					</thead>
@@ -25,7 +24,6 @@
 						<tr>
 							<th scope="row">{{ $loop->iteration }}</th>
 							<td>{{ $product->name }}</td>
-							<td class="text-success">KES {{ $product->price }}</td>
 							<td>
 								<div class="d-flex">
 									<a href="/products/{{ $product->id }}/edit"

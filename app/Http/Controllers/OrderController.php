@@ -58,7 +58,7 @@ class OrderController extends Controller
             "entry_number" => "required|string",
             "kra_due" => "required|string",
             "kebs_due" => "required|string",
-            "other_query" => "required|string",
+            "other_charges" => "required|string",
         ]);
 
         [$saved, $message, $order] = $this->service->store($request);

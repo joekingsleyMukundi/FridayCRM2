@@ -30,15 +30,6 @@
 							   class="form-control"
 							   required>
 					</div>
-					<div class="form-group">
-						<label for="price">Price</label>
-						<input id="price"
-							   type="number"
-							   name="price"
-							   placeholder="{{ $product->price }}"
-							   class="form-control"
-							   required>
-					</div>
 					<div class="d-flex justify-content-end">
 						<button type="submit"
 								class="btn btn-primary btn-rounded">Update Product</button>

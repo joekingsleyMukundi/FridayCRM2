@@ -23,7 +23,7 @@
 							<th scope="col">Product</th>
 							<th scope="col">KRA Due</th>
 							<th scope="col">KEBS Due</th>
-							<th scope="col">Other Query</th>
+							<th scope="col">Other Charges</th>
 							<th scope="col">Total Value</th>
 							<th scope="col">Status</th>
 							<th scope="col">Action</th>
@@ -40,7 +40,7 @@
 							<td>{{ $order->product->name }}</td>
 							<td>{{ $order->kra_due }}</td>
 							<td>{{ $order->kebs_due }}</td>
-							<td>{{ $order->other_query }}</td>
+							<td>{{ $order->other_charges }}</td>
 							<td>{{ $order->total_value }}</td>
 							<td>
 								<span @class(['py-2
