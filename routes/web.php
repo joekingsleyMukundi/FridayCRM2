@@ -28,10 +28,19 @@ Route::middleware("auth")->group(function () {
         "statements" => StatementController::class,
     ]);
 
+    /*
+     * Invoice
+     */
     Route::get("/invoices", [OrderController::class, "invoiceIndex"]);
     Route::put("/invoices/{id}", [OrderController::class, "updateInvoiceStatus"]);
 
-    Route::get("statement-by-customer-name", [StatementController::class, "byCustomerName"])->name("statements.by.customer.name");
+    /*
+     * Statement
+     */
+    Route::get("statement-by-customer-name", [StatementController::class, "byCustomerName"])
+        ->name("statements.by.customer.name");
+    Route::get("statement-by-status", [StatementController::class, "byStatus"])
+        ->name("statements.by.status");
 });
 
 Auth::routes();

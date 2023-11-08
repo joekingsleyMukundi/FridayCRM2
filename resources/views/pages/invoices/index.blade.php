@@ -25,7 +25,7 @@
 							<th scope="row">{{ $loop->iteration }}</th>
 							<td>{{ $order->user->name }}</td>
 							<td>{{ $order->product->name }}</td>
-							<td>{{ $order->total_value }}</td>
+							<td class="text-success">KES {{ $order->total_value }}</td>
 							<td>
 								<div class="d-flex">
 									<div class="mx-1">

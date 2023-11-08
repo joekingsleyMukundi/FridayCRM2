@@ -20,6 +20,7 @@
 							<th scope="col">Phone</th>
 							<th scope="col">Registration Number</th>
 							<th scope="col">Address</th>
+							<th scope="col">KRA Pin</th>
 							<th scope="col">Action</th>
 						</tr>
 					</thead>
@@ -32,6 +33,7 @@
 							<td>{{ $user->phone }}</td>
 							<td>{{ $user->registration_number }}</td>
 							<td>{{ $user->address }}</td>
+							<td>{{ $user->kra_pin }}</td>
 							<td>
 								<div class="d-flex">
 									<a href="/users/{{ $user->id }}/edit"

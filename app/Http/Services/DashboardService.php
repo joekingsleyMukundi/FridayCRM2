@@ -10,7 +10,7 @@ class DashboardService
 {
     public function index()
     {
-        $totalUsers = User::count();
+        $totalUsers = User::where("account_type", "normal")->count();
 
         $totalOrders = Order::count();
 

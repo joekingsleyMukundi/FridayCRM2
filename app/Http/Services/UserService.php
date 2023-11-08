@@ -15,9 +15,11 @@ class UserService
      */
     public function index()
     {
-        $getUsers = User::paginate(15);
+        $getUsers = User::where("account_type", "normal")
+            ->orderBy("id", "DESC")
+            ->paginate(15);
 
-		return UserResource::collection($getUsers);
+        return UserResource::collection($getUsers);
     }
 
     /**
@@ -29,18 +31,19 @@ class UserService
     public function store($request)
     {
         $user = new User;
-		$user->name = $request->input("name");
-		$user->email = $request->input("email");
-		$user->phone = $request->input("phone");
-		$user->registration_number = $request->input("registration_number");
-		$user->address = $request->input("address");
-		$user->password = Hash::make($request->input("email"));
+        $user->name = $request->input("name");
+        $user->email = $request->input("email");
+        $user->password = Hash::make($request->input("email"));
+        $user->phone = $request->input("phone");
+        $user->registration_number = $request->input("registration_number");
+        $user->address = $request->input("address");
+        $user->kra_pin = $request->input("kra_pin");
 
-		$saved = $user->save();
+        $saved = $user->save();
 
-		$message = $user->name . " created successfully";
+        $message = $user->name . " created successfully";
 
-		return [$saved, $message, $user];
+        return [$saved, $message, $user];
     }
 
     /**
@@ -53,7 +56,7 @@ class UserService
     {
         $user = User::find($id);
 
-		return new UserResource($user);
+        return new UserResource($user);
     }
 
     /**
@@ -67,27 +70,31 @@ class UserService
     {
         $user = User::find($id);
 
-		if ($request->filled("name")) {
-			$user->name = $request->input("name");
-		}
-		
-		if ($request->filled("registration_number")) {
-			$user->registration_number = $request->input("registration_number");
-		}
-		
-		if ($request->filled("address")) {
-			$user->address = $request->input("address");
-		}
-		
-		if ($request->filled("phone")) {
-			$user->phone = $request->input("phone");
-		}
+        if ($request->filled("name")) {
+            $user->name = $request->input("name");
+        }
 
-		$saved = $user->save();
+        if ($request->filled("registration_number")) {
+            $user->registration_number = $request->input("registration_number");
+        }
 
-		$message = $user->name . " updated successfully";
+        if ($request->filled("address")) {
+            $user->address = $request->input("address");
+        }
 
-		return [$saved, $message, $user];
+        if ($request->filled("kra_pin")) {
+            $user->kra_pin = $request->input("kra_pin");
+        }
+
+        if ($request->filled("phone")) {
+            $user->phone = $request->input("phone");
+        }
+
+        $saved = $user->save();
+
+        $message = $user->name . " updated successfully";
+
+        return [$saved, $message, $user];
     }
 
     /**
@@ -100,10 +107,10 @@ class UserService
     {
         $getUser = User::find($id);
 
-		$deleted = $getUser->delete();
+        $deleted = $getUser->delete();
 
-		$message = $getUser->name . " deleted successfully";
+        $message = $getUser->name . " deleted successfully";
 
-		return [$deleted, $message, $getUser];
+        return [$deleted, $message, $getUser];
     }
 }

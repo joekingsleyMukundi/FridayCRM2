@@ -54,7 +54,7 @@
 							   class="form-control">
 					</div>
 					<div class="form-group">
-						<label for="address"
+						<label for="kra_pin"
 							   class="col-form-label">KRA Pin</label>
 						<input id="kra_pin"
 							   type="text"

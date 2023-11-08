@@ -17,13 +17,26 @@ class StatementService
         return StatementResource::collection($orders);
     }
 
+    /*
+     * Search by Customer Name
+     */
     public function byCustomerName($request)
     {
         $search = $request->input("search");
 
         $orders = Order::join("users", "users.id", "=", "orders.user_id")
             ->where("users.name", "LIKE", "%$search%")
-            ->get();
+            ->paginate();
+
+        return StatementResource::collection($orders);
+    }
+
+    /*
+     * Search by Status
+     */
+    public function byStatus($request)
+    {
+        $orders = Order::where("status", $request->input("status"))->paginate();
 
         return StatementResource::collection($orders);
     }
