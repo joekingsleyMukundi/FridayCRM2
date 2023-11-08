@@ -39,6 +39,9 @@
 				@endforeach
 			</div>
 		</div>
+		<div class="card-footer">
+			{{ $orders->links() }}
+		</div>
 	</div>
 	<!-- ============================================================== -->
 	<!-- end custom content list  -->

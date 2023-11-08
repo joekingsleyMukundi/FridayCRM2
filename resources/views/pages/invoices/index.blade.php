@@ -20,18 +20,18 @@
 						</tr>
 					</thead>
 					<tbody>
-						@foreach ($invoices as $invoice)
+						@foreach ($orders as $order)
 						<tr>
 							<th scope="row">{{ $loop->iteration }}</th>
-							<td>{{ $invoice->user->name }}</td>
-							<td>{{ $invoice->order->product->name }}</td>
-							<td>{{ $invoice->amount }}</td>
+							<td>{{ $order->user->name }}</td>
+							<td>{{ $order->product->name }}</td>
+							<td>{{ $order->total_value }}</td>
 							<td>
 								<div class="d-flex">
 									<div class="mx-1">
 										{{-- Confirm Status Modal End --}}
 										<div class="modal fade"
-											 id="statusModal{{ $invoice->id }}"
+											 id="statusModal{{ $order->id }}"
 											 tabIndex="-1"
 											 aria-labelledby="statusModalLabel"
 											 aria-hidden="true">
@@ -61,11 +61,11 @@
 																class="btn btn-success rounded-pill text-white"
 																data-bs-dismiss="modal"
 																onclick="event.preventDefault();
-						                                                     document.getElementById('statusForm{{ $invoice->id }}').submit();">
+						                                                     document.getElementById('statusForm{{ $order->id }}').submit();">
 															Update
 														</button>
-														<form id="statusForm{{ $invoice->id }}"
-															  action="/invoices/{{ $invoice->id }}"
+														<form id="statusForm{{ $order->id }}"
+															  action="/invoices/{{ $order->id }}"
 															  method="POST"
 															  style="display: none;">
 															<input type="hidden"
@@ -86,7 +86,7 @@
 										<button type="button"
 												class="btn btn-sm btn-success rounded-pill text-white"
 												data-bs-toggle="modal"
-												data-bs-target="#statusModal{{ $invoice->id }}">
+												data-bs-target="#statusModal{{ $order->id }}">
 											Set Paid
 										</button>
 									</div>
@@ -98,7 +98,7 @@
 				</table>
 			</div>
 			<div class="card-footer">
-				{{ $invoices->links() }}
+				{{ $orders->links() }}
 			</div>
 		</div>
 	</div>

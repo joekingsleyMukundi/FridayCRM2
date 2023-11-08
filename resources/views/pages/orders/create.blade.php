@@ -70,40 +70,39 @@
 							   class="form-control">
 					</div>
 					<div class="form-group">
-						<label for="inputText4"
+						<label for="kraDueInput"
 							   class="col-form-label">Kra Due</label>
-						<input id="kra_due"
+						<input id="kraDueInput"
 							   type="number"
 							   name="kra_due"
 							   placeholder="Enter Amount"
 							   class="form-control">
 					</div>
 					<div class="form-group">
-						<label for="inputText4"
+						<label for="kebsDueInput"
 							   class="col-form-label">Kebs Due</label>
-						<input id="kebs_due"
+						<input id="kebsDueInput"
 							   type="number"
 							   name="kebs_due"
 							   placeholder="Enter Amount"
 							   class="form-control">
 					</div>
 					<div class="form-group">
-						<label for="other_charges"
+						<label for="otherChargesInput"
 							   class="col-form-label">Other Charges</label>
-						<input id="other_charges"
+						<input id="otherChargesInput"
 							   type="number"
 							   name="other_charges"
 							   placeholder="Enter Amount"
 							   class="form-control">
 					</div>
 					<div class="form-group">
-						<label for="total_value"
+						<label for="totalValueInput"
 							   class="col-form-label">Total Value</label>
-						<input id="total_value"
+						<input id="totalValueInput"
 							   type="number"
 							   name="total_value"
 							   class="form-control"
-							   value=:100300
 							   disabled>
 					</div>
 					<div class="d-flex justify-content-end">
@@ -118,4 +117,21 @@
 <!-- ============================================================== -->
 <!-- end basic form  -->
 <!-- ============================================================== -->
+<script>
+	// Function to calculate total value
+    function calculateSum() {
+        var kraDueInput = parseFloat(document.getElementById('kraDueInput').value) || 0;
+        var kebsDueInput = parseFloat(document.getElementById('kebsDueInput').value) || 0;
+        var otherChargesInput = parseFloat(document.getElementById('otherChargesInput').value) || 0;
+
+        var sum = kraDueInput + kebsDueInput + otherChargesInput;
+
+        document.getElementById('totalValueInput').value = sum;
+    }
+
+    // Attach an event listener to each input field
+    document.getElementById('kraDueInput').addEventListener('input', calculateSum);
+    document.getElementById('kebsDueInput').addEventListener('input', calculateSum);
+    document.getElementById('otherChargesInput').addEventListener('input', calculateSum);
+</script>
 @endsection

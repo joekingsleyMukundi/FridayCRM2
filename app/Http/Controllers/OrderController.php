@@ -128,4 +128,26 @@ class OrderController extends Controller
             "success" => $message,
         ]);
     }
+
+    /*
+     * Fetch Invoices
+     */
+    public function invoiceIndex()
+    {
+        $orders = $this->service->invoiceIndex();
+
+        return view("pages/invoices/index")
+            ->with(["orders" => $orders]);
+    }
+
+    /*
+     * Update Invoice Status
+     */
+    public function updateInvoiceStatus($id)
+    {
+        [$saved, $message, $orders] = $this->service->updateInvoiceStatus($id);
+
+        return redirect("/invoices")
+            ->with(["success" => $message]);
+    }
 }

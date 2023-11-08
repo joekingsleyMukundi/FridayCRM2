@@ -6,10 +6,12 @@
 	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<div class="card">
 			<div class="d-flex justify-content-between card-header">
-				<h3 class="">Orders</h3>
-				<h4 class="text-success">KES {{ $ordersPendingValue }}</h4>
+				<h3>Orders</h3>
 				<a href="/orders/create"
 				   class="btn btn-primary btn-rounded">Create</a>
+			</div>
+			<div class="d-flex card-header">
+				<h4>Pending Amount <span class="text-success">KES {{ $ordersPendingValue }}</span></h4>
 			</div>
 			<div class="card-body">
 				<table class="table">
@@ -38,19 +40,19 @@
 							<td>{{ $order->entry_number }}</td>
 							<td>{{ $order->user->name }}</td>
 							<td>{{ $order->product->name }}</td>
-							<td>{{ $order->kra_due }}</td>
-							<td>{{ $order->kebs_due }}</td>
-							<td>{{ $order->other_charges }}</td>
-							<td>{{ $order->total_value }}</td>
+							<td class="text-success">KES {{ $order->kra_due }}</td>
+							<td class="text-success">KES {{ $order->kebs_due }}</td>
+							<td class="text-success">KES {{ $order->other_charges }}</td>
+							<td class="text-success">KES {{ $order->total_value }}</td>
 							<td>
 								<span @class(['py-2
 									  px-4
 									  rounded-pill
 									  text-capitalize'
-									  , 'bg-warning-subtle'=> $order->invoice?->status == 'pending'
-									, 'bg-success-subtle'=> $order->invoice?->status == 'paid'
+									  , 'bg-warning-subtle'=> $order->status == 'pending'
+									, 'bg-success-subtle'=> $order->status == 'paid'
 									])>
-									{{ $order->invoice?->status }}
+									{{ $order->status }}
 								</span>
 							</td>
 							<td>
@@ -122,6 +124,9 @@
 						@endforeach
 					</tbody>
 				</table>
+			</div>
+			<div class="card-footer">
+				{{ $orders->links() }}
 			</div>
 		</div>
 	</div>

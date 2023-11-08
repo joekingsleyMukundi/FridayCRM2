@@ -2,8 +2,8 @@
 
 namespace App\Http\Services;
 
+use App\Http\Resources\InvoiceResource;
 use App\Http\Resources\OrderResource;
-use App\Models\Invoice;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
@@ -17,10 +17,9 @@ class OrderService
      */
     public function index()
     {
-        $getOrders = Order::paginate();
+        $getOrders = Order::orderBy("id", "DESC")->paginate();
 
-        $ordersPendingValue = Order::join("invoices", "orders.id", "=", "invoices.order_id")
-            ->where("status", "pending")
+        $ordersPendingValue = Order::where("status", "pending")
             ->sum("orders.total_value");
 
         return [$ordersPendingValue, OrderResource::collection($getOrders)];
@@ -70,13 +69,6 @@ class OrderService
         $order->total_value = $totalValue;
 
         $saved = $order->save();
-
-        // Create Invoice
-        $invoice = new Invoice;
-        $invoice->order_id = $order->id;
-        $invoice->user_id = $request->input("user_id");
-        $invoice->amount = $totalValue;
-        $invoice->save();
 
         $message = "Order created successfully";
 
@@ -143,6 +135,10 @@ class OrderService
             $order->total_value = $request->input("total_value");
         }
 
+        if ($request->filled("status")) {
+            $order->status = $request->input("status");
+        }
+
         $saved = $order->save();
 
         $message = "Order updated successfully";
@@ -165,5 +161,32 @@ class OrderService
         $message = "Order deleted successfully";
 
         return [$deleted, $message, $getOrder];
+    }
+
+    /*
+     * Get Invoices
+     */
+    public function invoiceIndex()
+    {
+        $invoices = Order::where("status", "pending")
+            ->orderBy("id", "DESC")
+            ->paginate();
+
+        return InvoiceResource::collection($invoices);
+    }
+
+    /*
+     * Update Invoice Status
+     */
+    public function updateInvoiceStatus($id)
+    {
+        $order = Order::find($id);
+        $order->status = "paid";
+
+        $saved = $order->save();
+
+        $message = "Invoice updated successfully";
+
+        return [$saved, $message, $order];
     }
 }

@@ -47,7 +47,6 @@ class ProductController extends Controller
     {
         $this->validate($request, [
             "name" => "required|string",
-            "price" => "required|string",
         ]);
 
         [$saved, $message, $product] = $this->service->store($request);
@@ -90,7 +89,6 @@ class ProductController extends Controller
     {
         $this->validate($request, [
             "name" => "string",
-            "price" => "string",
         ]);
 
         [$saved, $message, $product] = $this->service->update($request, $id);

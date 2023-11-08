@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('kebs_due')->nullable();
             $table->string('other_charges')->nullable();
             $table->string('total_value')->nullable();
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

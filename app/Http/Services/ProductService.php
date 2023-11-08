@@ -15,7 +15,7 @@ class ProductService
      */
     public function index()
     {
-        $getProducts = Product::paginate(15);
+        $getProducts = Product::orderBy("id", "DESC")->paginate(10);
 
         return ProductResource::collection($getProducts);
     }
@@ -64,18 +64,6 @@ class ProductService
 
         if ($request->filled("name")) {
             $product->name = $request->input("name");
-        }
-
-        if ($request->filled("registration_number")) {
-            $product->registration_number = $request->input("registration_number");
-        }
-
-        if ($request->filled("address")) {
-            $product->address = $request->input("address");
-        }
-
-        if ($request->filled("phone")) {
-            $product->phone = $request->input("phone");
         }
 
         $saved = $product->save();
