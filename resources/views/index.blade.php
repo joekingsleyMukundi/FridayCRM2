@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- wrapper  -->
 
 <div class="dashboard-ecommerce">
 	<div class="container-fluid dashboard-content ">
@@ -12,10 +11,11 @@
 						<div class="card-body">
 							<h5 class="text-muted">Customers</h5>
 							<div class="metric-value d-inline-block">
-								<h1 class="mb-1">{{ $dashboard["totalUsers"] }}</h1>
+								<h1 class="mb-1">{{ $dashboard["users"]["total"] }}</h1>
 							</div>
 							<div class="metric-label d-inline-block float-right text-success font-weight-bold">
-								<span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
+								<span><i class="fa fa-fw fa-arrow-up"></i></span>
+								{{-- <span>{{ $dashboard["users"]["growth"] }}%</span> --}}
 							</div>
 						</div>
 						<div id="sparkline-revenue"></div>
@@ -100,18 +100,23 @@
 					<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
 						<div class="card">
 							<div class="card-header">
-								<div class="float-right">
+								{{-- <div class="float-right">
 									<select class="custom-select">
 										<option selected>Today</option>
 										<option value="1">Weekly</option>
 										<option value="2">Monthly</option>
 										<option value="3">Yearly</option>
 									</select>
-								</div>
+								</div> --}}
 								<h5 class="mb-0"> Orders per day</h5>
 							</div>
 							<div class="card-body">
-								<div class="ct-chart-product ct-golden-section"></div>
+								<div class="ct-chart-product ct-golden-section">
+									<div id="bar-labels"
+										 class="d-none">{{ $dashboard["ordersLastWeek"]["labels"] }}</div>
+									<div id="bar-data"
+										 class="d-none">{{ $dashboard["ordersLastWeek"]["data"] }}</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -499,5 +504,4 @@
 		</div>
 	</div>
 </div>
-
 @endsection

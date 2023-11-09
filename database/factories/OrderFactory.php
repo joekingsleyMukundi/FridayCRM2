@@ -19,9 +19,9 @@ class OrderFactory extends Factory
      */
     public function definition()
     {
-		$user = User::all()->random();
+        $user = User::all()->random();
 
-		$product = Product::all()->random();
+        $product = Product::all()->random();
 
         return [
             "user_id" => $user->id,
@@ -33,6 +33,7 @@ class OrderFactory extends Factory
             "kebs_due" => fake()->numberBetween(1000, 10000),
             "other_charges" => fake()->numberBetween(100, 1000),
             "total_value" => fake()->numberBetween(10000, 100000),
+            "created_at" => Carbon::now()->subDay(rand(3, 12)),
         ];
     }
 }
