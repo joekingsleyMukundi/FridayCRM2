@@ -13,10 +13,27 @@
 							<div class="metric-value d-inline-block">
 								<h1 class="mb-1">{{ $dashboard["users"]["total"] }}</h1>
 							</div>
+							{{-- Declare User Growth Variable --}}
+							@php
+							$userGrowth = $dashboard["users"]["growth"];
+							@endphp
+							{{-- Show Growth --}}
+							@if ($userGrowth > 0)
 							<div class="metric-label d-inline-block float-right text-success font-weight-bold">
 								<span><i class="fa fa-fw fa-arrow-up"></i></span>
-								{{-- <span>{{ $dashboard["users"]["growth"] }}%</span> --}}
+								<span>{{ $userGrowth }}%</span>
 							</div>
+							@elseif ($userGrowth == 0)
+							<div class="metric-label d-inline-block float-right text-muted font-weight-bold">
+								<span>{{ $userGrowth }}%</span>
+							</div>
+							@else
+							<div class="metric-label d-inline-block float-right text-warning font-weight-bold">
+								<span><i class="fa fa-fw fa-arrow-up"></i></span>
+								<span>{{ $userGrowth }}%</span>
+							</div>
+							@endif
+							{{-- Show Growth End --}}
 						</div>
 						<div id="sparkline-revenue"></div>
 					</div>
@@ -26,11 +43,28 @@
 						<div class="card-body">
 							<h5 class="text-muted">Orders</h5>
 							<div class="metric-value d-inline-block">
-								<h1 class="mb-1">{{ $dashboard["totalOrders"] }}</h1>
-							</div>
+								<h1 class="mb-1">{{ $dashboard["orders"]["total"] }}</h1>
+							</div>{{-- Declare User Growth Variable --}}
+							@php
+							$orderGrowth = $dashboard["orders"]["growth"];
+							@endphp
+							{{-- Show Growth --}}
+							@if ($orderGrowth > 0)
 							<div class="metric-label d-inline-block float-right text-success font-weight-bold">
-								<span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span>
+								<span><i class="fa fa-fw fa-arrow-up"></i></span>
+								<span>{{ $orderGrowth }}%</span>
 							</div>
+							@elseif ($orderGrowth == 0)
+							<div class="metric-label d-inline-block float-right text-muted font-weight-bold">
+								<span>{{ $orderGrowth }}%</span>
+							</div>
+							@else
+							<div class="metric-label d-inline-block float-right text-warning font-weight-bold">
+								<span><i class="fa fa-fw fa-arrow-up"></i></span>
+								<span>{{ $orderGrowth }}%</span>
+							</div>
+							@endif
+							{{-- Show Growth End --}}
 						</div>
 						<div id="sparkline-revenue2"></div>
 					</div>
@@ -40,11 +74,28 @@
 						<div class="card-body">
 							<h5 class="text-muted">Revenue</h5>
 							<div class="metric-value d-inline-block">
-								<h1 class="mb-1 text-success fs-4">KES {{ $dashboard["revenue"] }}</h1>
+								<h1 class="mb-1 text-success fs-4">KES {{ $dashboard["revenue"]["total"] }}</h1>
+							</div>{{-- Declare User Growth Variable --}}
+							@php
+							$revenueGrowth = $dashboard["revenue"]["growth"];
+							@endphp
+							{{-- Show Growth --}}
+							@if ($revenueGrowth > 0)
+							<div class="metric-label d-inline-block float-right text-success font-weight-bold">
+								<span><i class="fa fa-fw fa-arrow-up"></i></span>
+								<span>{{ $revenueGrowth }}%</span>
 							</div>
-							<div class="metric-label d-inline-block float-right text-primary font-weight-bold">
-								<span>N/A</span>
+							@elseif ($revenueGrowth == 0)
+							<div class="metric-label d-inline-block float-right text-muted font-weight-bold">
+								<span>{{ $revenueGrowth }}%</span>
 							</div>
+							@else
+							<div class="metric-label d-inline-block float-right text-warning font-weight-bold">
+								<span><i class="fa fa-fw fa-arrow-up"></i></span>
+								<span>{{ $revenueGrowth }}%</span>
+							</div>
+							@endif
+							{{-- Show Growth End --}}
 						</div>
 						<div id="sparkline-revenue3"></div>
 					</div>
@@ -54,11 +105,28 @@
 						<div class="card-body">
 							<h5 class="text-muted">Products</h5>
 							<div class="metric-value d-inline-block">
-								<h1 class="mb-1">{{ $dashboard["totalProducts"] }}</h1>
+								<h1 class="mb-1">{{ $dashboard["products"]["total"] }}</h1>
+							</div>{{-- Declare User Growth Variable --}}
+							@php
+							$productGrowth = $dashboard["products"]["growth"];
+							@endphp
+							{{-- Show Growth --}}
+							@if ($productGrowth > 0)
+							<div class="metric-label d-inline-block float-right text-success font-weight-bold">
+								<span><i class="fa fa-fw fa-arrow-up"></i></span>
+								<span>{{ $productGrowth }}%</span>
 							</div>
-							<div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
-								<span>-2.00%</span>
+							@elseif ($productGrowth == 0)
+							<div class="metric-label d-inline-block float-right text-muted font-weight-bold">
+								<span>{{ $productGrowth }}%</span>
 							</div>
+							@else
+							<div class="metric-label d-inline-block float-right text-warning font-weight-bold">
+								<span><i class="fa fa-fw fa-arrow-up"></i></span>
+								<span>{{ $productGrowth }}%</span>
+							</div>
+							@endif
+							{{-- Show Growth End --}}
 						</div>
 						<div id="sparkline-revenue4"></div>
 					</div>
@@ -137,7 +205,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											@foreach ($dashboard["topProducts"] as $product)
+											@foreach ($dashboard["products"]["top"] as $product)
 											<tr>
 												<td>{{ $loop->iteration }}</td>
 												<td>{{ $product->name }}</td>
@@ -178,7 +246,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										@foreach ($dashboard["orders"] as $order)
+										@foreach ($dashboard["orders"]["list"] as $order)
 										<tr>
 											<th scope="row">{{ $loop->iteration }}</th>
 											<td>{{ $order->date }}</td>

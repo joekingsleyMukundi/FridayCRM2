@@ -17,7 +17,7 @@ class UserService
     {
         $getUsers = User::where("account_type", "normal")
             ->orderBy("id", "DESC")
-            ->paginate(15);
+            ->paginate(10);
 
         return UserResource::collection($getUsers);
     }

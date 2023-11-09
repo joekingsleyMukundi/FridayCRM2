@@ -17,7 +17,7 @@ class OrderService
      */
     public function index()
     {
-        $getOrders = Order::orderBy("id", "DESC")->paginate();
+        $getOrders = Order::orderBy("id", "DESC")->paginate(10);
 
         $ordersPendingValue = Order::where("status", "pending")
             ->sum("orders.total_value");
@@ -170,7 +170,7 @@ class OrderService
     {
         $invoices = Order::where("status", "pending")
             ->orderBy("id", "DESC")
-            ->paginate();
+            ->paginate(10);
 
         return InvoiceResource::collection($invoices);
     }
